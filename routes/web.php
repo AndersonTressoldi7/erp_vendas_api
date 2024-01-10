@@ -7,4 +7,9 @@ use App\Http\Controllers\ProdutosController;
 Route::prefix('produtos')->group(function () {
     Route::get('/', [ProdutosController::class, 'index']);
     Route::get('/{codigo}', [ProdutosController::class, 'buscarProdutoPeloCodigo']);
+    Route::post('/{produto', [ProdutosController::class, 'salvarProduto']);
+});
+
+Route::get('/info', function () {
+    return view('phpinfo');
 });

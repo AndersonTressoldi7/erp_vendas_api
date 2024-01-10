@@ -14,9 +14,6 @@ class ProdutosController extends Controller
     }
 
     public function buscarProdutoPeloCodigo($codigo){
-
-
-        
         $produto = Produto::where('codigo', $codigo)->first();
 
         if ($produto) {
@@ -24,5 +21,10 @@ class ProdutosController extends Controller
         } else {
             return response()->json(['message' => 'Produto não encontrado'], 404);
         }
+    }
+
+    public function salvarProduto($Produto){
+       
+        
     }
 }

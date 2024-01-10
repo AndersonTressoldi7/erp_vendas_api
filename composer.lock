@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9c491b8531eec05ba41a11d9276a5749",
+    "content-hash": "a4bca7d0edb93fa0408410961bb96014",
     "packages": [
         {
             "name": "brick/math",
@@ -2390,6 +2390,50 @@
                 }
             ],
             "time": "2023-02-08T01:06:31+00:00"
+        },
+        {
+            "name": "php-debug/debugger",
+            "version": "v0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yuncopy/debugger.git",
+                "reference": "56f4d1403c5fb49d5be3c1257e82342f17a13aab"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yuncopy/debugger/zipball/56f4d1403c5fb49d5be3c1257e82342f17a13aab",
+                "reference": "56f4d1403c5fb49d5be3c1257e82342f17a13aab",
+                "shasum": ""
+            },
+            "type": "php-extension",
+            "autoload": {
+                "psr-4": {
+                    "Debugger\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ajay",
+                    "email": "yuncopy@sina.com"
+                }
+            ],
+            "description": "The debugger  for the wzphp framework",
+            "keywords": [
+                "debugger",
+                "framework",
+                "redis",
+                "wzphp"
+            ],
+            "support": {
+                "forum": "https://github.com/yuncopy",
+                "issues": "https://github.com/yuncopy/debugger/issues",
+                "source": "https://github.com/yuncopy/debugger"
+            },
+            "time": "2019-02-20T08:23:07+00:00"
         },
         {
             "name": "phpoption/phpoption",
