@@ -29,10 +29,24 @@ class ProdutosController extends Controller
         if(Produto::where('codigo', $dadosProduto['codigo'])->first()){
             return response()->json(['message' => 'Já existe um produto com esse código'], 409);
         }else{
-        $produto = Produto::create($dadosProduto);
-        return response()->json(['message' => 'Produto salvo com sucesso'], 201);
+            Produto::create($dadosProduto);
+        return response()->json(['message' => 'Produto salvo com sucesso!'], 201);
         }
         
+    }
+
+    public function buscarProdutoFiltrando(Request $request){
+
+        $tipoFiltro = $request->input('checkboxTipoFiltro');
+        $filtro = $request->input('filtros');
+
+        if($tipoFiltro=="descricao"){
+            $produtos = Produto::where('nome', 'like', "%$filtro%")->get();
+        }else{
+            $produtos = Produto::where('codigo', 'like', "%$filtro%")->get();
+        }
+        
+        return response()->json($produtos);
     }
     
 }
