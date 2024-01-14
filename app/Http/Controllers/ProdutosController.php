@@ -23,8 +23,16 @@ class ProdutosController extends Controller
         }
     }
 
-    public function salvarProduto($Produto){
-       
+    public function salvarProduto(Request $request){
+        $dadosProduto = $request->input('produto');
+
+        if(Produto::where('codigo', $dadosProduto['codigo'])->first()){
+            return response()->json(['message' => 'Já existe um produto com esse código'], 409);
+        }else{
+        $produto = Produto::create($dadosProduto);
+        return response()->json(['message' => 'Produto salvo com sucesso'], 201);
+        }
         
     }
+    
 }
