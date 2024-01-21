@@ -42,7 +42,7 @@ class ProdutosController extends Controller
 
         if($tipoFiltro=="descricao"){
             $produtos = Produto::where('nome', 'like', "%$filtro%")->get();
-        }else{
+        }else if($tipoFiltro=="codigo"){
             $produtos = Produto::where('codigo', 'like', "%$filtro%")->get();
         }
         
