@@ -2,6 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdutosController;
+use App\Http\Controllers\VendasController;
+
+
+
+Route::prefix('vendas')->group(function () {
+    Route::get('/', [VendasController::class, 'index']);
+    Route::post('/salvarVenda', [VendasController::class, 'salvarVenda']);
+});
 
 
 Route::prefix('produtos')->group(function () {

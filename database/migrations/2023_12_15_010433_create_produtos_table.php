@@ -11,7 +11,7 @@ class CreateProdutosTable extends Migration
             $table->id();
             $table->string('nome');
             $table->decimal('codigo');
-            $table->decimal('preco', 8, 2);
+            $table->double('preco', 8, 2);
             $table->timestamps();
         });
     }
