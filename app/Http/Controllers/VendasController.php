@@ -21,7 +21,10 @@ class VendasController extends Controller
             ]);
 
         $dadosVenda['venda_id'] = $venda->id;
-        $this->salvarProdutosVenda($dadosVenda);
+     
+        $htmlDav = $this->salvarProdutosVenda($dadosVenda);
+
+        return response()->json(['htmlDav' => $htmlDav]);
     }
 
     public function salvarProdutosVenda($dadosVenda){
@@ -56,21 +59,61 @@ class VendasController extends Controller
             ]);
         }
 
-        $this->gerarDav($produtosAgrupados, $dadosVenda);
+      return  $this->gerarDav($produtosAgrupados, $dadosVenda);
     }
 
-   
     function gerarDav($produtosAgrupados, $dadosVenda) {
-        // Retorno de teste em formato JSON
-        return response()->json(['message' => 'Teste de retorno - Isso é apenas um teste!'], 200);
+        // Inicializa o HTML da DAV
+        $html = '<html>
+                    <head>
+                        <style>
+                            body {
+                                font-family: Arial, sans-serif;
+                                text-align: center;
+                                font-size: 6px; 
+                            }
+                            table {
+                                width: 50%; /* Defina a largura desejada para a tabela */
+                                margin: 20px auto; /* Centraliza a tabela */
+                                border-collapse: collapse;
+                            }
+                            th, td {
+                                border: 1px solid #ddd;
+                                padding: 8px;
+                                text-align: left;
+                            }
+                            th {
+                                background-color: #f2f2f2;
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <p>Dados para a Venda ' . $dadosVenda['venda_id'] . '</p>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID do Produto</th>
+                                    <th>Código</th>
+                                    <th>Quantidade</th>
+                                </tr>
+                            </thead>
+                            <tbody>';
+        
+        // Adiciona os itens à DAV
+        foreach ($produtosAgrupados as $produto) {
+            $html .= '<tr>
+                        <td>' . $produto['produto_id'] . '</td>
+                        <td>' . $produto['codigo'] . '</td>
+                        <td>' . $produto['quantidade'] . '</td>
+                    </tr>';
+        }
+    
+        $html .= '</tbody>
+                </table>
+            </body>
+        </html>';
+    
+        return $html;
     }
     
-
-    
-    
-    
-
-    
-
-
 }
