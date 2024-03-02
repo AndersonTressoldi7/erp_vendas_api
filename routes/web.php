@@ -21,6 +21,7 @@ Route::prefix('pessoas')->group(function () {
 Route::prefix('produtos')->group(function () {
     Route::get('/filtrarProduto', [ProdutosController::class, 'buscarProdutoFiltrando']);
     Route::post('/cadastrarProduto', [ProdutosController::class, 'salvarProduto']);
+    Route::put('/cadastrarProduto', [ProdutosController::class, 'editarProduto']);
     Route::get('/{codigo}', [ProdutosController::class, 'buscarProdutoPeloCodigo'])->where('codigo', '[0-9]+');
     Route::get('/', [ProdutosController::class, 'index']);
 });

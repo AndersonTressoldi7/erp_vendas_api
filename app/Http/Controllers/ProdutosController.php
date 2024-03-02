@@ -35,6 +35,18 @@ class ProdutosController extends Controller
         
     }
 
+    public function editarProduto(Request $request){
+        $dadosProduto = $request->input('produto');
+        $produto = Produto::find($dadosProduto['id']);
+
+        if(Produto::where('codigo', $dadosProduto['codigo'])->first() && $dadosProduto['codigo'] != $produto['codigo']){
+            return response()->json(['message' => 'Já existe um produto com esse código'], 409);
+        }
+        
+        $produto->update($dadosProduto);
+       
+    }
+
     public function buscarProdutoFiltrando(Request $request){
 
         $tipoFiltro = $request->input('checkboxTipoFiltro');
